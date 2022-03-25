@@ -1,0 +1,30 @@
+{% if all_products %}
+<ul>
+    {% for product in all_products %}
+    <li>
+        {{ product.name }} <br />
+        price: {{ product.price }} <br />
+        <a href="delete_product/{{ product.id }}">delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No products are available.</p>
+{% endif %}
+
+<br><br>
+
+<form action="/sales_api/create_new_product/" method="post">
+    {% csrf_token %}
+    <p>
+        <label for="name">Name: </label>
+        <input id="name" type="text" required name="name" value="">
+    </p>
+    <br />
+    <p>
+        <label for="price">Price: </label>
+        <input id="price" type="number" required name="price" value="" , min="0" , step=".01">
+    </p>
+    <br />
+    <input type="submit" value="OK">
+</form>

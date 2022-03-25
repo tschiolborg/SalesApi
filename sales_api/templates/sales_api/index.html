@@ -5,43 +5,44 @@
 {% block content %}
 
 
-{% if all_products %}
-<ul>
-    {% for product in all_products %}
-    <li>{{ product.name }}</li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No products are available.</p>
-{% endif %}
 
 
-<button type="button" class="collapsible">Tilføj</button>
+
+<button type="button" class="collapsible" id="add">Tilføj</button>
 <div class="content">
     <p>Some text 1.</p>
 </div>
 
 <br><br>
 
-<button type="button" class="collapsible">Salg</button>
+<button type="button" class="collapsible" id="sale">Salg</button>
 <div class="content">
     <p>Some text 2.</p>
 </div>
 
 <br><br>
 
-<button type="button" class="collapsible">Salgshistorik</button>
+<button type="button" class="collapsible" id="sh">Salgshistorik</button>
 <div class="content">
     <p>Some text 3.</p>
 </div>
 
 <br><br>
 
-<button type="button" class="collapsible">Afslutning på dagen</button>
+<button type="button" class="collapsible" id="afpd">Afslutning på dagen</button>
 <div class="content">
     <p>Some text 4.</p>
 </div>
 
+<br><br>
+
+
+<button type="button" class="collapsible" id="products">Products</button>
+<div class="content">
+    {% include "sales_api/products.html" %}
+</div>
+
+<br><br>
 
 
 
