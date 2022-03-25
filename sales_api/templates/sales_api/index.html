@@ -1,0 +1,19 @@
+{% extends 'sales_api/base.html' %}
+
+{% block title %}Index{% endblock %}
+
+{% block content %}
+
+
+{% if all_products %}
+    <ul>
+    {% for product in all_products %}
+        <li>{{ product.name }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No products are available.</p>
+{% endif %}
+
+{% endblock %}
+
