@@ -4,6 +4,17 @@
 
 {% block content %}
 
-<p>end of day!</p>
+{% if transactiions_today %}
+<ul>
+    {% for transaction in transactiions_today %}
+    <li>
+        <p>{{ transaction.product.name }}, {{ transaction.amount }}, {{ transaction.total_price }}</p>
+        <br />
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No transactions today.</p>
+{% endif %}
 
 {% endblock%}

@@ -15,6 +15,7 @@
         <p>
             <span id="sales_{{ product.id }}" class="sales_open_modal select">{{ product.name }}</span>
             : {{ product.count }}
+            <span id="sales_price_{{ product.price }}" class="sales_price_{{ product.id }}"></span>
         </p>
         <img src="{{ product.image.url }}" style="width: 15%">
         <br />
@@ -34,19 +35,24 @@
 
         <form action="/sales_api/sales/" method="post" id="sales_form">
             {% csrf_token %}
-            <b id="sales_selected_item"></b>
+            <b>Sell </b><b id="sales_selected_item"></b>
+            <br><br>
+            <p>Price</p>
+            <span id="sales_decrease_p" class="btn_span no_marking">-</span>
+            &nbsp;
+            <input id="sales_price_input" type="number" required name="price" value="0" , min="0" , step="0.01">
+            &nbsp;
+            <span id="sales_increase_p" class="btn_span no_marking">+</span>
             <br><br>
             <p>Amount</p>
             <span id="sales_decrease" class="btn_span no_marking">-</span>
             &nbsp;
-            <input id="sales_count_input" type="number" required name="count" value="0" , min="0" , step="1">
+            <input id="sales_count_input" type="number" required name="count" value="1" , min="1" , step="1">
             &nbsp;
             <span id="sales_increase" class="btn_span no_marking">+</span>
             <br><br>
             <input type="submit" value="Confirm">
         </form>
-
-
 
     </div>
 
