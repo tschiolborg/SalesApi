@@ -29,7 +29,7 @@
 <div id="add_modal" class="modal">
 
     <div class="modal-content">
-        <span class="close no_marking">&times;</span>
+        <span class="close no_marking" id="add_close">&times;</span>
 
         <form action="/sales_api/add_count/" method="post" id="add_form">
             {% csrf_token %}

@@ -8,7 +8,7 @@ function set_up_add() {
     var modal = document.getElementById("add_modal");
     var inner_modal_text = document.getElementById("add_selected_item");
     var items = document.getElementsByClassName("add_open_modal");
-    var close_btn = document.getElementsByClassName("close")[0];
+    var close_btn = document.getElementById("add_close");
     var increase_btn = document.getElementById("add_increase");
     var decrease_btn = document.getElementById("add_decrease");
     var input_field = document.getElementById("add_count_input");
