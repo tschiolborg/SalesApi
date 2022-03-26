@@ -1,0 +1,44 @@
+{% extends 'sales_api/collapsible.html' %}
+
+{% load static %}
+
+{% block name %}Additions{% endblock %}
+
+{% block content %}
+
+
+{% if all_products %}
+<ul>
+    {% for product in all_products %}
+    <li>
+        <p>
+            <span id="add_{{ product.id }}" class="add_open_modal select">{{ product.name }}</span>
+            : {{ product.count }}
+        </p>
+        <br />
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No products are available.</p>
+{% endif %}
+
+
+
+<div id="add_modal" class="modal">
+
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <form>
+            <p id="add_selected_item"></p>
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src='{% static "sales_api/additions.js" %}'></script>
+
+{% endblock %}
