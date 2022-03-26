@@ -1,9 +1,59 @@
 {% extends 'sales_api/collapsible.html' %}
 
+{% load static %}
+
 {% block name %}Sales{% endblock %}
 
 {% block content %}
 
-<p>sales!</p>
+
+
+{% if all_products %}
+<ul>
+    {% for product in all_products %}
+    <li>
+        <p>
+            <span id="sales_{{ product.id }}" class="sales_open_modal select">{{ product.name }}</span>
+            : {{ product.count }}
+        </p>
+        <img src="{{ product.image.url }}" style="width: 15%">
+        <br />
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No products are available.</p>
+{% endif %}
+
+
+
+<div id="sales_modal" class="modal">
+
+    <div class="modal-content">
+        <span class="close no_marking" id="sales_close">&times;</span>
+
+        <form action="/sales_api/sales/" method="post" id="sales_form">
+            {% csrf_token %}
+            <b id="sales_selected_item"></b>
+            <br><br>
+            <p>Amount</p>
+            <span id="sales_decrease" class="btn_span no_marking">-</span>
+            &nbsp;
+            <input id="sales_count_input" type="number" required name="count" value="0" , min="0" , step="1">
+            &nbsp;
+            <span id="sales_increase" class="btn_span no_marking">+</span>
+            <br><br>
+            <input type="submit" value="Confirm">
+        </form>
+
+
+
+    </div>
+
+</div>
+
+
+<script src='{% static "sales_api/sales.js" %}' type="module"></script>
+
 
 {% endblock%}

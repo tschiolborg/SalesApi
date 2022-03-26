@@ -1,18 +1,18 @@
 import { select, inc_dec_input } from './utils.js';
 
-set_up_add();
+set_up_sales();
 
 
-function set_up_add() {
+function set_up_sales() {
 
-    var modal = document.getElementById("add_modal");
-    var inner_modal_text = document.getElementById("add_selected_item");
-    var items = document.getElementsByClassName("add_open_modal");
-    var close_btn = document.getElementById("add_close");
-    var increase_btn = document.getElementById("add_increase");
-    var decrease_btn = document.getElementById("add_decrease");
-    var input_field = document.getElementById("add_count_input");
-    var form = document.getElementById("add_form");
+    var modal = document.getElementById("sales_modal");
+    var inner_modal_text = document.getElementById("sales_selected_item");
+    var items = document.getElementsByClassName("sales_open_modal");
+    var close_btn = document.getElementById("sales_close");
+    var increase_btn = document.getElementById("sales_increase");
+    var decrease_btn = document.getElementById("sales_decrease");
+    var input_field = document.getElementById("sales_count_input");
+    var form = document.getElementById("sales_form");
 
     // onclick for each item: open modal
     for (var i = 0; i < items.length; i++) {
@@ -35,7 +35,7 @@ function set_up_add() {
 
     function set_select(item) {
         select(item, modal, inner_modal_text);
-        form.action = item == null ? "/sales_api/add_count/" : "/sales_api/add_count/" + item.id.slice(4) + "/";
+        form.action = item == null ? "/sales_api/sales/" : "/sales_api/sales/" + item.id.slice(4) + "/";
         input_field.value = 0;
     }
 }
