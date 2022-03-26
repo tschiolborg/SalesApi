@@ -101,3 +101,19 @@ input {
     text-decoration: none;
     cursor: pointer;
 }
+
+.btn_span {
+    color: #aaaaaa;
+    font-size: 20px;
+    font-weight: bold;
+}
+.btn_span:hover,
+.btn_span:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.no_marking {
+    -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none; /* disable marking of text */
+}

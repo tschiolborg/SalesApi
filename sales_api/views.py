@@ -41,3 +41,16 @@ def delete_product(request, id):
     except:
         return HttpResponse(f"Error: Could not delete.")
     return redirect("/sales_api/")
+
+
+def add_count(request, id):
+    if request.method == "POST":
+        try:
+            print(request.POST.get("count"))
+            Product.objects.filter(id=id)[0].increase_count(
+                int(request.POST.get("count"))
+            )
+            return redirect("/sales_api/")
+        except:
+            return HttpResponse(f"Error: Could not update product")
+    return HttpResponse("Error: no post")
