@@ -14,7 +14,7 @@ class Product(models.Model):
         return True
 
     def decrease_count(self, amount):
-        if amount < self.count:
+        if amount <= self.count:
             self.count -= amount
             self.save()
             return True

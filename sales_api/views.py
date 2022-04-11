@@ -16,7 +16,7 @@ def index(request):
         "all_products": all_products,
         "transactiions_today": transactiions_today,
     }
-    return render(request, "sales_api/index.html", context)
+    return render(request, "sales_api/sales_api.html", context)
 
 
 def create_new_product(request):
@@ -61,7 +61,7 @@ def sales(request, id):
     if request.method == "POST":
         try:
             product = Product.objects.filter(id=id)[0]
-            price = Decimal(request.POST.get("price"))
+            price = product.price
             count = int(request.POST.get("count"))
             was_changed = product.decrease_count(count)
             if was_changed:
