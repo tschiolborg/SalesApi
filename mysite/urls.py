@@ -8,6 +8,7 @@ from . import views
 urlpatterns = [
     path("sales_api/", include("sales_api.urls")),
     path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("", views.index, name="index"),
 ]
 

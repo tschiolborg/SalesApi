@@ -19,34 +19,6 @@ def index(request):
     return render(request, "sales_api/sales_api.html", context)
 
 
-def create_new_product(request):
-    if request.method == "POST":
-        name = request.POST.get("name")
-        price = request.POST.get("price")
-        if name is not None and name != "":
-            try:
-                price = Decimal(price)
-            except:
-                return HttpResponse("Error: Cannot read price")
-
-            Product.objects.create(
-                name=name,
-                price=price,
-            )
-            return redirect("/sales_api/config/")
-        else:
-            return HttpResponse("Error: No name given")
-    return HttpResponse("Error: no post")
-
-
-def delete_product(request, id):
-    try:
-        Product.objects.filter(id=id).delete()
-    except:
-        return HttpResponse(f"Error: Could not delete.")
-    return redirect("/sales_api/config/")
-
-
 def add_count(request, id):
     if request.method == "POST":
         try:
@@ -79,12 +51,3 @@ def sales(request, id):
             print(e)
             return HttpResponse(f"Error: Could not update product")
     return HttpResponse("Error: no post")
-
-
-def config(request):
-    all_products = Product.objects.order_by("name").all()
-
-    context = {
-        "all_products": all_products,
-    }
-    return render(request, "sales_api/config.html", context)

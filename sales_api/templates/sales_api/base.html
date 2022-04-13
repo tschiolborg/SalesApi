@@ -11,10 +11,33 @@
 </head>
 
 <body>
+    <div class="topnav">
+        <a class="activ" href="/sales_api/">Name of app!</a>
+
+        {% if user.is_staff %}
+        <a href="/admin/">Admin</a>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+        <a class="logout" href="{% url 'logout' %}">Log Out</a></p>
+        {% endif %}
+
+    </div>
+    <br><br>
+
+    {% if user.is_authenticated %}
+
     {% block content %}
     {% endblock %}
 
-    <p id="debug">debug</p>
+    {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Log In</a>
+    {% endif %}
+
+
+
+    <!-- <p id="debug">debug</p> -->
 
     <script src='{% static "sales_api/base.js" %}'></script>
 </body>
