@@ -6,6 +6,7 @@ mypy-extensions==0.4.3
 pathspec==0.9.0
 Pillow==9.0.1
 platformdirs==2.5.1
+psycopg2-binary==2.9.3
 sqlparse==0.4.2
 tomli==2.0.1
 typing_extensions==4.1.1
