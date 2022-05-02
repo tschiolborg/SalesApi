@@ -8,7 +8,7 @@ $ source .venv/bin/activate
 
 ### Run app
 ```bash
-$ python manage.py runserver
+$ python manage.py runserver.b
 ```
 
 

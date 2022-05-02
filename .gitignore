@@ -1,6 +1,11 @@
-.DS_Store
-db.sqlite3
+
+/data
+/media
+!/media/images/no_photo.jpeg
+
 .vscode/
+
+notes.txt
 
 #### MAC
 
