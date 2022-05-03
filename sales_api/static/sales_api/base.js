@@ -24,6 +24,7 @@ function open_content() {
 }
 
 function collapse(elm) {
+    // collapse this elm
     elm.className = elm.className.replace(" active", "");
     elm.nextElementSibling.style.maxHeight = null;
 }

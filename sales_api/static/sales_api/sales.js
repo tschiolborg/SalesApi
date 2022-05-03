@@ -4,6 +4,7 @@ set_up_sales();
 
 
 function set_up_sales() {
+    // this sets up the modal for adding products
 
     var modal = document.getElementById("sales_modal");
     var inner_modal_text = document.getElementById("sales_selected_item");
@@ -35,6 +36,8 @@ function set_up_sales() {
     decrease_btn.onclick = function () { inc_dec_input(false, input_field, 1); }
 
     function set_select(item) {
+        // sets the selected item
+
         select(item, modal, inner_modal_text);
         input_field.value = 1;
         if (item != null) {

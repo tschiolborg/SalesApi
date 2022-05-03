@@ -8,6 +8,11 @@ from .models import Product, Transaction
 
 
 def index(request):
+    """
+    /sales_api/
+    returns sales_api.html with contents of all products and all transactiions done today
+    """
+
     all_products = Product.objects.order_by("name").all()
 
     transactiions_today = Transaction.objects.all().filter(date__gte=date.today())
@@ -20,6 +25,10 @@ def index(request):
 
 
 def add_count(request, id):
+    """
+    sales_api/add_count/<int:id>/
+    redirects to sales_api if successfully updating count of selected product
+    """
     if request.method == "POST":
         try:
             Product.objects.filter(id=id)[0].increase_count(int(request.POST.get("count")))
@@ -30,6 +39,10 @@ def add_count(request, id):
 
 
 def sales(request, id):
+    """
+    sales_api/sales/<int:id>/
+    redirects to /sales_api/, creates new transaction and decreases count of selected product if possible
+    """
     if request.method == "POST":
         try:
             product = Product.objects.filter(id=id)[0]
@@ -44,9 +57,7 @@ def sales(request, id):
                 )
                 return redirect("/sales_api/")
             else:
-                return HttpResponse(
-                    f"Error: Cannot sell {count} items, when there only is {product.count} available."
-                )
+                return HttpResponse(f"Error: Cannot sell {count} items, when there only is {product.count} available.")
         except Exception as e:
             print(e)
             return HttpResponse(f"Error: Could not update product")

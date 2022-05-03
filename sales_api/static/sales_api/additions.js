@@ -4,6 +4,7 @@ set_up_add();
 
 
 function set_up_add() {
+    // this sets up the modal for adding products
 
     var modal = document.getElementById("add_modal");
     var inner_modal_text = document.getElementById("add_selected_item");
@@ -34,6 +35,8 @@ function set_up_add() {
     decrease_btn.onclick = function () { inc_dec_input(false, input_field); }
 
     function set_select(item) {
+        // sets the selected item
+
         select(item, modal, inner_modal_text);
         form.action = item == null ? "/sales_api/add_count/" : "/sales_api/add_count/" + item.id.slice(4) + "/";
         input_field.value = 0;
