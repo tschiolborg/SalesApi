@@ -1,5 +1,12 @@
-.venv
+# JS
+node_modules
+
+# Dev
+.github
 .git
 .gitignore
+venv
+.venv
+README.md
 .vscode
 db.sqlite3

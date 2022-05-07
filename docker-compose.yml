@@ -1,7 +1,8 @@
-version: "3.2"
+version: "3.7"
 
 services:
   backend:
+    container_name: backend
     build: ./backend
     volumes:
       - ./backend:/app/backend
@@ -13,7 +14,9 @@ services:
       - db
     environment:
       - DJANGO_SETTINGS_MODULE=backend.settings.dev
+
   frontend:
+    container_name: frontend
     build: ./frontend
     volumes:
       - ./frontend:/app
@@ -22,8 +25,22 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
     depends_on:
       - backend
-    command: npm start
+    command: yarn start
+
   db:
-    image: postgres:11.1-alpine
+    container_name: db
+    image: postgres:14.0-alpine
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres-data:

@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,17 +21,6 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-n@%9g6&@5al9#&pa1bdfn)_5p7+2w&l%#z%+4v#8$!k1e2+858"
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
 # Media directory
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
@@ -40,13 +29,18 @@ MEDIA_URL = "/media/"
 # Application definition
 
 INSTALLED_APPS = [
-    "sales_api.apps.SalesApiConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.conrin.sites",
+    "corsheaders",
+    "rest_framework",
+    "rest_framework.authtoken",
+    "api",
+    "backend",
 ]
 
 MIDDLEWARE = [
@@ -59,7 +53,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "mysite.urls"
+ROOT_URLCONF = "backend.urls"
 
 TEMPLATES = [
     {
@@ -77,23 +71,14 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "mysite.wsgi.application"
+WSGI_APPLICATION = "backend.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 # set up postgresql
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "db",  # set in docker-compose.yml
-        "PORT": 5432,  # default postgres port
-    }
-}
+DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "Name": os.path.join(BASE_DIR, "db.sqlite3")}}
 
 
 # Password validation
@@ -120,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Copenhagen"
 
 USE_I18N = True
 
@@ -132,9 +117,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": (("rest_framework.permission.AllowAny",)),
+    "DEFAULT_AUTHENTICATION_CLASSES": (("rest_framework.authentication.TokenAuthentication",)),
+}
+
 STATIC_URL = "static/"
+
+# Append slash to url if not provied
+APPEND_SLASH = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# CORS headers
+CORS_ALLOW_ALL_ORIGINS = True
+
+# for django.contrib.sites
+SIDE_ID = 1

@@ -1,4 +1,6 @@
-FROM python:3.7-alpine
+FROM python:3.9.6-alpine
+
+ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app/backend
 
