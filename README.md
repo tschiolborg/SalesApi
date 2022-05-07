@@ -1,29 +1,13 @@
 
-### Virtual environment:
+## Run develoment server
 ```bash
-$ python -m venv .venv
-$ source .venv/bin/activate
+$ docker-compose up --build
 ```
+Then go to `localhost:8000` for backend and `localhost:3000` for frontend.
 
-
-### Run app
+When no changed is made, use:
 ```bash
-$ python manage.py runserver.b
-```
-
-
-### Make migrations
-```bash
-$ python manage.py makemigrations sales_api
-$ python manage.py migrate
-```
-
-
-### Create project
-```bash
-$ python -m pip install Django
-$ django-admin startproject mysite
-$ python manage.py startapp sales_api
+$ docker-compose up
 ```
 
 
