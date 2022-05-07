@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('sales_api', '0001_initial'),
+        ('api', '0001_initial'),
     ]
 
     operations = [
@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('amount', models.PositiveIntegerField(default=0)),
                 ('total_price', models.DecimalField(decimal_places=2, max_digits=12)),
-                ('product', models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to='sales_api.product')),
+                ('product', models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to='api.product')),
             ],
         ),
     ]

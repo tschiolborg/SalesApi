@@ -7,14 +7,16 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('sales_api', '0002_transaction'),
+        ("api", "0002_transaction"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='transaction',
-            name='date',
-            field=models.DateTimeField(auto_now_add=True, default=django.utils.timezone.now, verbose_name='date of transaction'),
+            model_name="transaction",
+            name="date",
+            field=models.DateTimeField(
+                auto_now_add=True, default=django.utils.timezone.now, verbose_name="date of transaction"
+            ),
             preserve_default=False,
         ),
     ]
