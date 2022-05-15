@@ -1,4 +1,4 @@
-FROM python:3.9.6-alpine
+FROM python:3.9.5-slim
 
 ENV PYTHONUNBUFFERED=1
 
@@ -6,14 +6,9 @@ WORKDIR /app/backend
 
 # Install Python dependencies
 COPY requirements.txt /app/backend
-RUN  \
-    apk update && \
-    apk upgrade && \
-    apk add bash && \
-    apk add --no-cache postgresql-libs && \
-    apk add --no-cache --virtual .build-deps gcc musl-dev postgresql-dev && \
-    pip3 install --upgrade pip -r requirements.txt && \
-    apk --purge del .build-deps
+RUN apt-get update \
+    && apt-get -y install libpq-dev gcc \
+    && pip3 install --upgrade pip -r requirements.txt
 
 # Add the rest of the code
 COPY . /app/backend
