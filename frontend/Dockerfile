@@ -7,9 +7,9 @@ COPY package.json yarn.lock /app/
 
 # install dependencies and avoid `node-gyp rebuild` errors
 RUN apk add --no-cache --virtual .gyp \
-        python \
-        make \
-        g++ \
+    python \
+    make \
+    g++ \
     && npm install \
     && apk del .gyp
 
