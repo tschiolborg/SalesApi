@@ -38,10 +38,49 @@
     display: table;
     clear: both;
   }
+
+  .rowBtnDiv {
+    visibility: hidden;
+    height: 0cm;
+  }
+
+  .orderBtn {
+    margin: 0px 0px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 10px 5px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    border: none;
+    color: white;
+    background: #0c529c;
+    transition: all 0.25s ease;
+  }
+  
+  .orderBtn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px -10px rgba(24, 90, 219, 0.6);
+  }
+
+  .colList {
+    visibility: visible;
+    text-align: right;
+    padding-right: 50px;
+  }
   
   /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 600px) {
-    .column {
-      width: 100%;
+    .columnLeft {
+      width: 80%;
+    }
+    .columnRight {
+      width: 20%;
+    }
+    .colList {
+      visibility: hidden;
+    }
+    .rowBtnDiv {
+      visibility: visible;
+      height: 5cm;
     }
   }

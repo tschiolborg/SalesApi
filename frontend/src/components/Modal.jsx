@@ -1,24 +1,23 @@
 import React from "react";
 import styles from "./Modal.module.css"
 
-const Modal = ({ setIsOpen, product }) => {
+const Modal = ({ setIsOpen, product, setReturnTransaction }) => {
     return (
         <>
         <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
         <div className={styles.centered}>
             <div className={styles.modal}>
                 <div className={styles.modalHeader}>
-                    <h5 className={styles.heading}>Dialog</h5>
+                    <h5 className={styles.heading}>{product.name}</h5>
                 </div>
-                <button className={styles.closeBtn} onClick={() => setIsOpen(false)}>
-                    X
-                </button>
                 <div className={styles.modalContent}>
-                    <h5>{product.name}</h5>
+                    Price: {product.price} kr.
+                    <br></br>
+                    Avaliable: {product.count}
                 </div>
                 <div className={styles.modalActions}>
-                    <button className={styles.deleteBtn} onClick={() => setIsOpen(false)}>
-                        Delete
+                    <button className={styles.okBtn} onClick={() => setIsOpen(false)}>
+                        OK
                     </button>
                     <button className={styles.cancelBtn} onClick={() => setIsOpen(false)}>
                         Cancel

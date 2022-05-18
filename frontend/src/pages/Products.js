@@ -10,6 +10,14 @@ const ProductsState = rj({
     effect: (search = '') => ajax.getJSON(`/products/?search=${search}`)
 })
 
+class Transaction {
+    // transaction of one product
+    constructor(product, count) {
+        this.product = product;
+        this.count = count;
+    }
+}
+
 export default function Products() {
     const { user } = useAuthUser()
     const { logout } = useAuthActions()
@@ -55,7 +63,15 @@ export default function Products() {
                 </div>
             </div>
             <div className={styles.columnRight}>
-                HEJ
+                <div className={styles.rowBtnDiv}>
+                    <button className={styles.orderBtn}>
+                        See Order
+                    </button>
+                </div>
+
+                <div className={styles.colList}>
+                    <h2>Current order</h2>
+                </div>
             </div>
             {
                 isOpen && selectedItem &&
