@@ -1,0 +1,47 @@
+.primaryBtn {
+    margin: 20px 10px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 11px 20px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    border: none;
+    color: white;
+    background: #0c529c;
+    transition: all 0.25s ease;
+  }
+  
+  .primaryBtn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px -10px rgba(24, 90, 219, 0.6);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  .columnLeft {
+    float: left;
+    width: 75%;
+    padding: 10px;
+  }
+  
+  .columnRight {
+    float: left;
+    width: 25%;
+    padding: 10px;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+  }

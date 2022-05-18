@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
 }
@@ -7,5 +11,5 @@ h1 {
 }
 
 h2 {
-  color: #093058
+  color: #0c529c
 }
