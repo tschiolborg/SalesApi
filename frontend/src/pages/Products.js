@@ -25,6 +25,11 @@ export default function Products() {
     const [{ data: products }] = useRunRj(ProductsState, [search], false) // trigger api call
     const [isOpen, setIsOpen] = useState(false)
     const [selectedItem, setSelectedItem] = useState({ name: "", price: 0.0, count: 0 })
+    const [transactions] = useState([])
+
+    const addNewTransaction = (transaction) => {
+        transactions.push(transaction)
+    }
 
     return (
         <div className="row mt-2 p-2">
@@ -41,7 +46,7 @@ export default function Products() {
                 </div>
             </div>
             <div className={styles.columnLeft}>
-                <div className='col-md-6 offset-md-1'>
+                <div className='col-md-10 offset-md-1'>
                     <div className="mt-2">
                         <input
                             value={search}
@@ -51,10 +56,13 @@ export default function Products() {
                             className="form-control"
                         />
                     </div>
-                    <div className='list-item mt-5'>
+                    <div className='list-item mt-4'>
                         {products &&
                             products.map((product) => (
-                                <div key={product.id} onClick={() => { setIsOpen(true); setSelectedItem(product) }}>
+                                <div key={product.id} onClick={() => {
+                                    setIsOpen(true);
+                                    setSelectedItem(product);
+                                }}>
                                     <ProductCard key={product.id} product={product} />
                                 </div>
                             ))
@@ -70,12 +78,42 @@ export default function Products() {
                 </div>
 
                 <div className={styles.colList}>
-                    <h2>Current order</h2>
+                    <h5>Current order</h5>
+                    <div>
+                        <div>
+                            Total price:
+                        </div>
+                        <b>
+                            {transactions &&
+                                transactions.reduce(
+                                    (total, currentValue) => total = total + parseFloat(currentValue.product.price), 0).toFixed(2)
+                            }
+                            <> kr.</>
+                        </b>
+
+                    </div>
+                    <div className='list-item mt-4'>
+                        {transactions &&
+                            transactions.map((transaction) => (
+                                <div className="list-group-item">
+                                    <div>
+                                        <b>{transaction.count * transaction.product.price} kr. </b>
+                                    </div>
+                                    <b>{transaction.count} x </b>
+                                    <b>{transaction.product.name} </b>
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
             </div>
             {
                 isOpen && selectedItem &&
-                <Modal setIsOpen={setIsOpen} product={selectedItem} />
+                <Modal
+                    setIsOpen={setIsOpen}
+                    product={selectedItem}
+                    setReturnTransaction={addNewTransaction}
+                />
             }
         </div >
 

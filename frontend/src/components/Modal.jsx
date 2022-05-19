@@ -1,6 +1,14 @@
 import React from "react";
 import styles from "./Modal.module.css"
 
+class Transaction {
+    // transaction of one product
+    constructor(product, count) {
+        this.product = product;
+        this.count = count;
+    }
+}
+
 const Modal = ({ setIsOpen, product, setReturnTransaction }) => {
     return (
         <>
@@ -16,7 +24,10 @@ const Modal = ({ setIsOpen, product, setReturnTransaction }) => {
                     Avaliable: {product.count}
                 </div>
                 <div className={styles.modalActions}>
-                    <button className={styles.okBtn} onClick={() => setIsOpen(false)}>
+                    <button className={styles.okBtn} onClick={() => {
+                        setIsOpen(false);
+                        setReturnTransaction(new Transaction(product, 1));
+                    }}>
                         OK
                     </button>
                     <button className={styles.cancelBtn} onClick={() => setIsOpen(false)}>
