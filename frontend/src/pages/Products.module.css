@@ -62,6 +62,25 @@
     box-shadow: 0 10px 20px -10px rgba(24, 90, 219, 0.6);
   }
 
+  .removeBtn {
+    margin-top: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 7px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    border: none;
+    color: white;
+    background: #f6603a;
+    transition: all 0.25s ease;
+  }
+  
+  .removeBtn:hover {
+    box-shadow: 0 10px 20px -10px rgba(222, 61, 33, 0.735);
+    transform: translateY(-5px);
+    color: white;
+  }
+
   .colList {
     visibility: visible;
     text-align: right;

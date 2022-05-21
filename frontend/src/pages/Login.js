@@ -24,7 +24,7 @@ export default function Login() {
             <div className="col-md-4 offset-md-4">
                 <div className="mb-3">
                     <h1>Sales Api</h1>
-                    <h2 className="mt-4">Please Log In</h2>
+                    <h4 className="mt-4">Please Log In</h4>
                 </div>
                 <div className="form-group">
                     <input

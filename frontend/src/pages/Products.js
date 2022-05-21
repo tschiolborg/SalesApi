@@ -25,10 +25,20 @@ export default function Products() {
     const [{ data: products }] = useRunRj(ProductsState, [search], false) // trigger api call
     const [isOpen, setIsOpen] = useState(false)
     const [selectedItem, setSelectedItem] = useState({ name: "", price: 0.0, count: 0 })
-    const [transactions] = useState([])
+    const [transactions, setTransactions] = useState([])
 
     const addNewTransaction = (transaction) => {
         transactions.push(transaction)
+    }
+    const removeTransaction = (transaction) => {
+        var old_array = [...transactions]
+        var new_array = []
+        old_array.forEach(t => {
+            if (t != transaction) {
+                new_array.push(t)
+            }
+        });
+        setTransactions(new_array)
     }
 
     return (
@@ -86,7 +96,11 @@ export default function Products() {
                         <b>
                             {transactions &&
                                 transactions.reduce(
-                                    (total, currentValue) => total = total + parseFloat(currentValue.product.price), 0).toFixed(2)
+                                    (total, currentValue) =>
+                                        total = total
+                                        + parseFloat(currentValue.product.price)
+                                        * parseFloat(currentValue.count),
+                                    0).toFixed(2)
                             }
                             <> kr.</>
                         </b>
@@ -97,10 +111,16 @@ export default function Products() {
                             transactions.map((transaction) => (
                                 <div className="list-group-item">
                                     <div>
-                                        <b>{transaction.count * transaction.product.price} kr. </b>
+                                        <b>{(transaction.count * transaction.product.price).toFixed(2)} kr. </b>
                                     </div>
                                     <b>{transaction.count} x </b>
                                     <b>{transaction.product.name} </b>
+                                    <div>
+                                        <button className={styles.removeBtn}
+                                            onClick={() => { removeTransaction(transaction) }}>
+                                            Delete
+                                        </button>
+                                    </div>
                                 </div>
                             ))
                         }

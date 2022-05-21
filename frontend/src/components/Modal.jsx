@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from 'react'
 import styles from "./Modal.module.css"
 
 class Transaction {
@@ -10,6 +11,19 @@ class Transaction {
 }
 
 const Modal = ({ setIsOpen, product, setReturnTransaction }) => {
+    const [count, setCount] = useState(0)
+
+    const evalCount = (val) => {
+        var parsed = parseInt(val)
+        if (parsed != NaN && val >= 0 && val <= product.count) {
+            setCount(parsed)
+            document.getElementById("countID").value = parsed
+        } else {
+            setCount(0)
+            document.getElementById("countID").value = 0
+        }
+    }
+
     return (
         <>
         <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
@@ -22,11 +36,27 @@ const Modal = ({ setIsOpen, product, setReturnTransaction }) => {
                     Price: {product.price} kr.
                     <br></br>
                     Avaliable: {product.count}
+                    <br></br>
+                    <>Sell amount: </>
+                    <input 
+                        className={styles.modal_input}
+                        type="number" 
+                        id="countID"
+                        min="0" 
+                        max={product.count}
+                        step="1"
+                        pattern="[0-9]"
+                        onChange={ e => {
+                            evalCount(e.target.value)
+                        }}
+                    />
                 </div>
                 <div className={styles.modalActions}>
                     <button className={styles.okBtn} onClick={() => {
                         setIsOpen(false);
-                        setReturnTransaction(new Transaction(product, 1));
+                        if (count > 0) {
+                            setReturnTransaction(new Transaction(product, count));
+                        }
                     }}>
                         OK
                     </button>
