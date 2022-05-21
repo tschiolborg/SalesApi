@@ -62,6 +62,24 @@
     box-shadow: 0 10px 20px -10px rgba(24, 90, 219, 0.6);
   }
 
+  .confirmBtn {
+    margin-top: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 7px 10px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    border: none;
+    color: white;
+    background: #44ff3e;
+    transition: all 0.25s ease;
+  }
+  
+  .confirmBtn:hover {
+    box-shadow: 0 10px 20px -10px rgba(74, 222, 33, 0.735);
+    transform: translateY(-5px);
+  }
+
   .removeBtn {
     margin-top: 5px;
     cursor: pointer;

@@ -10,12 +10,12 @@ class Transaction {
     }
 }
 
-const Modal = ({ setIsOpen, product, setReturnTransaction }) => {
+const ModalSelect = ({ setIsOpen, product, setReturnTransaction }) => {
     const [count, setCount] = useState(0)
 
     const evalCount = (val) => {
         var parsed = parseInt(val)
-        if (parsed != NaN && val >= 0 && val <= product.count) {
+        if (!isNaN(parsed) && val >= 0 && val <= product.count) {
             setCount(parsed)
             document.getElementById("countID").value = parsed
         } else {
@@ -45,7 +45,6 @@ const Modal = ({ setIsOpen, product, setReturnTransaction }) => {
                         min="0" 
                         max={product.count}
                         step="1"
-                        pattern="[0-9]"
                         onChange={ e => {
                             evalCount(e.target.value)
                         }}
@@ -71,4 +70,4 @@ const Modal = ({ setIsOpen, product, setReturnTransaction }) => {
 };
 
 
-export default Modal;
+export default ModalSelect;

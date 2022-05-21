@@ -6,13 +6,13 @@ from rest_framework_simplejwt.views import (
 )
 
 from .viewsets import ProductViewSet
-from .views import SimpleAPIView, UserView
+from .views import UserView, transactions_view
 
 router = DefaultRouter()
 router.register(r"products", ProductViewSet, "product")
 
 urlpatterns = [
-    path("test", SimpleAPIView.as_view(), name="test_api_view"),
+    path("transactions/", transactions_view, name="transactions_view"),
     path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("me/", UserView.as_view(), name="me"),

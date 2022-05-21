@@ -1,17 +1,15 @@
 import styles from "./ProductCard.module.css"
+import ImageComponent from "./ImageComponent"
 
 export default function ProductCard({ product }) {
     return (
         <div className={styles.div}>
             <div className="list-group-item">
                 <div>
-                    <b>{product.name}</b>
+                    <b>{product.name} : ({product.count} left)</b>
                 </div>
                 <div>
-                    <b>Price: {product.price}</b>
-                </div>
-                <div>
-                    <b>Count: {product.count}</b>
+                    <ImageComponent link={product.image.match("/media/images/.+")} />
                 </div>
             </div>
         </div>

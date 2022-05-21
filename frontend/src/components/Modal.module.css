@@ -99,6 +99,7 @@
 
   .modal_input {
     min-width: 50px;
+    max-width: 100px;
   }
 
   @media screen and (max-width: 600px) {
