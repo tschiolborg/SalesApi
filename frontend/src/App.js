@@ -6,6 +6,7 @@ import { map } from "rxjs/operators";
 import { ajax } from "rxjs/ajax";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
+import Summary from "./pages/Summary";
 
 const login = (credentials = {}) =>
   ajax({
@@ -60,6 +61,9 @@ export default function App() {
             </GuestRoute>
             <AuthRoute path="/" exact redirectTo="/login">
               <Products />
+            </AuthRoute>
+            <AuthRoute path="/summary" exact redirectTo="/login">
+              <Summary />
             </AuthRoute>
           </Switch>
         </Router>
