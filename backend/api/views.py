@@ -1,4 +1,4 @@
-from typing import List
+from datetime import date
 
 from rest_framework import status
 from rest_framework.response import Response
@@ -22,30 +22,33 @@ class UserView(APIView):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
-@api_view(['GET', 'POST'])
+
+@api_view(["GET", "POST"])
 def transactions_view(request):
+    """Get transactions today or post a new"""
 
     if request.method == "GET":
-        transactions_list = Transactions.objects.all()
-        transactions = Transaction.objects.all()
+        transactions = Transaction.objects.filter(date__gt=date.today()).order_by("-date")
 
         context_list = []
 
         for transaction in transactions:
-            list_of_products = transactions_list.filter(transaction=transaction)
+            list_of_products = Transactions.objects.all().filter(transaction=transaction)
             c = {}
+            c["id"] = transaction.id
             c["name"] = transaction.name
             c["total_price"] = transaction.total_price
             c["amount_payed"] = transaction.amount_payed
             c["pay_missing"] = transaction.pay_missing
-            c["datetime"] = transaction.date
+            c["date"] = str(transaction.date)[:16]
             c["username"] = transaction.user.username
-            c["products"] = [product.product.name for product in list_of_products]
-            c["counts"] = [product.count for product in list_of_products]
+            c["products"] = [
+                {"name": product.product.name if product.product is not None else "<deleted>", "count": product.count}
+                for product in list_of_products
+            ]
             context_list += [c]
 
         return Response(context_list, status=status.HTTP_200_OK)
-
 
     elif request.method == "POST":
         total_price = request.data["total_price"]
@@ -53,15 +56,16 @@ def transactions_view(request):
         product_ids = request.data["product_ids"]
         counts = request.data["counts"]
         user_id = request.data["user_id"]
+        name = request.data["name"]
 
         # find user
         user = User.objects.filter(id=user_id)[0]
 
         transaction = Transaction.objects.create(
-            total_price = total_price,
-            amount_payed = amount_payed,
-            user = user,
-            name = "sale",
+            total_price=total_price,
+            amount_payed=amount_payed,
+            user=user,
+            name=name,
         )
 
         for (product_id, count) in zip(product_ids, counts):
@@ -71,14 +75,8 @@ def transactions_view(request):
             if not product.decrease_count(count):
                 return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-            Transactions.objects.create(
-                transaction = transaction,
-                product = product,
-                count = count
-            )
+            Transactions.objects.create(transaction=transaction, product=product, count=count)
 
         return Response(status=status.HTTP_201_CREATED)
-    
+
     return Response(status=status.HTTP_400_BAD_REQUEST)
-
-

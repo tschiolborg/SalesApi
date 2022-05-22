@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { rj, useRunRj } from 'react-rocketjump'
 import { ajax } from 'rxjs/ajax'
 import { useAuthActions, useAuthUser } from 'use-eazy-auth'
-import styles from "./Products.module.css"
+import styles from "../styles/Products.module.css"
 import ProductCard from '../components/ProductCard'
 import ModalSelect from '../components/ModalSelect'
 import ModalConfirm from '../components/ModalConfirm'
@@ -14,7 +14,6 @@ const ProductsState = rj({
 
 export default function Products() {
     const { user } = useAuthUser()
-    const { logout } = useAuthActions()
     const [search, setSearch] = useState('')
     const [{ data: products }] = useRunRj(ProductsState, [search], false) // trigger api call
     const [isOpen, setIsOpen] = useState(false) // select modal
@@ -81,18 +80,6 @@ export default function Products() {
         <div>
             <Navbar />
             <div className="row mt-2 p-2">
-                <div className='col-md-6 offset-md-3'>
-                    <div className="mb-3">
-                        <p>
-                            Logged in as <i>{user.username}</i>
-                        </p>
-                    </div>
-                    <div className="text-right">
-                        <button onClick={logout} className={styles.primaryBtn}>
-                            Log Out
-                        </button>
-                    </div>
-                </div>
                 <div className={styles.columnLeft}>
                     <div className='col-md-10 offset-md-1'>
                         <div className="mt-2">
@@ -119,13 +106,8 @@ export default function Products() {
                     </div>
                 </div>
                 <div className={styles.columnRight}>
-                    <div className={styles.rowBtnDiv}>
-                        <button className={styles.orderBtn}>
-                            Not implement yet
-                        </button>
-                    </div>
-
                     <div className={styles.colList}>
+                        <p>Logged in as <i>{user.username}</i></p>
                         <h5>Current order</h5>
                         <div>
                             <div>
@@ -158,16 +140,18 @@ export default function Products() {
                             {transactions &&
                                 transactions.map((transaction) => (
                                     <div className="list-group-item">
-                                        <div>
-                                            <b>{(transaction.count * transaction.product.price).toFixed(2)} kr. </b>
-                                        </div>
-                                        <b>{transaction.count} x </b>
-                                        <b>{transaction.product.name} </b>
-                                        <div>
-                                            <button className={styles.removeBtn}
-                                                onClick={() => { removeTransaction(transaction) }}>
-                                                Delete
-                                            </button>
+                                        <div className={styles.myFontSize}>
+                                            <div>
+                                                <b>{(transaction.count * transaction.product.price).toFixed(2)} kr. </b>
+                                            </div>
+                                            <b>{transaction.count} x </b>
+                                            <b>{transaction.product.name} </b>
+                                            <div>
+                                                <button className={styles.removeBtn}
+                                                    onClick={() => { removeTransaction(transaction) }}>
+                                                    Delete
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 ))

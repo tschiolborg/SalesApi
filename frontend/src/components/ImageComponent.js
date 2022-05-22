@@ -16,7 +16,7 @@ export default function ImageComponent({ link }) {
 
     return (
         <>
-            <img src={img} alt="icons" width="100" height="100" />
+            <img src={img} className="myImage" alt="icons" />
         </>
     );
 }

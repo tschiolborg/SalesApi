@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from 'react'
 import { useAuthUser } from 'use-eazy-auth'
-import styles from "./Modal.module.css"
+import styles from "../styles/Modal.module.css"
 
 
 const ModalConfirm = ({ setIsOpen, transactions, setReturnBool }) => {
@@ -45,6 +45,7 @@ const ModalConfirm = ({ setIsOpen, transactions, setReturnBool }) => {
             method: "POST",
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({
+                "name": "Sale",
                 "total_price": total_price,
                 "amount_payed": payAmount,
                 "product_ids": transactions.map(({ product }) => product.id),

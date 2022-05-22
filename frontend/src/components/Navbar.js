@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useAuthActions } from 'use-eazy-auth'
-import styles from "./Navbar.module.css"
+import styles from "../styles/Navbar.module.css"
 
 
 export default function Navbar() {

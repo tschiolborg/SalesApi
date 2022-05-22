@@ -65,6 +65,9 @@ export default function App() {
             <AuthRoute path="/summary" exact redirectTo="/login">
               <Summary />
             </AuthRoute>
+            <AuthRoute path="/end-of-day" exact redirectTo="/login">
+              <Summary />
+            </AuthRoute>
           </Switch>
         </Router>
       </ConfigureAuth>

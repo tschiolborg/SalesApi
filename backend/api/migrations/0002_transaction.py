@@ -7,17 +7,22 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0001_initial'),
+        ("api", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Transaction',
+            name="Transaction",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('amount', models.PositiveIntegerField(default=0)),
-                ('total_price', models.DecimalField(decimal_places=2, max_digits=12)),
-                ('product', models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to='api.product')),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("amount", models.PositiveIntegerField(default=0)),
+                ("total_price", models.DecimalField(decimal_places=2, max_digits=12)),
+                (
+                    "product",
+                    models.ForeignKey(
+                        default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to="api.product"
+                    ),
+                ),
             ],
         ),
     ]

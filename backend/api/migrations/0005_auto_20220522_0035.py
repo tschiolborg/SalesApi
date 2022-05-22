@@ -9,41 +9,53 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('api', '0004_alter_product_id_alter_transaction_id_and_more'),
+        ("api", "0004_alter_product_id_alter_transaction_id_and_more"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='transaction',
-            name='amount',
+            model_name="transaction",
+            name="amount",
         ),
         migrations.RemoveField(
-            model_name='transaction',
-            name='product',
+            model_name="transaction",
+            name="product",
         ),
         migrations.AddField(
-            model_name='transaction',
-            name='amount_payed',
+            model_name="transaction",
+            name="amount_payed",
             field=models.DecimalField(decimal_places=2, default=0, max_digits=12),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='transaction',
-            name='name',
+            model_name="transaction",
+            name="name",
             field=models.CharField(max_length=256, null=True),
         ),
         migrations.AddField(
-            model_name='transaction',
-            name='user',
-            field=models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL),
+            model_name="transaction",
+            name="user",
+            field=models.ForeignKey(
+                default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.CreateModel(
-            name='Transactions',
+            name="Transactions",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('count', models.PositiveIntegerField(default=0)),
-                ('product', models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to='api.product')),
-                ('transaction', models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to='api.transaction')),
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("count", models.PositiveIntegerField(default=0)),
+                (
+                    "product",
+                    models.ForeignKey(
+                        default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to="api.product"
+                    ),
+                ),
+                (
+                    "transaction",
+                    models.ForeignKey(
+                        default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to="api.transaction"
+                    ),
+                ),
             ],
         ),
     ]

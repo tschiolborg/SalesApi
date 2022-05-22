@@ -33,3 +33,8 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.myImage {
+  height: 100px;
+  max-width : 210px;
+}
