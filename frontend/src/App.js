@@ -7,6 +7,7 @@ import { ajax } from "rxjs/ajax";
 import Login from "./pages/Login";
 import Products from "./pages/Products";
 import Summary from "./pages/Summary";
+import EndOfDay from "./pages/EndOfDay";
 
 const login = (credentials = {}) =>
   ajax({
@@ -66,7 +67,7 @@ export default function App() {
               <Summary />
             </AuthRoute>
             <AuthRoute path="/end-of-day" exact redirectTo="/login">
-              <Summary />
+              <EndOfDay />
             </AuthRoute>
           </Switch>
         </Router>

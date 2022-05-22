@@ -38,7 +38,13 @@ export default function Navbar() {
                         <a href="/">Sales</a>
                     </li>
                     <li>
+                        <a href="/tables">Tables</a>
+                    </li>
+                    <li>
                         <a href="/summary">Summary</a>
+                    </li>
+                    <li>
+                        <a href="/end-of-day">End of day</a>
                     </li>
                     <li>
                         <a href="/login" onClick={logout}>Logout</a>

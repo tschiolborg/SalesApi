@@ -68,4 +68,7 @@ class Transactions(models.Model):
         verbose_name_plural = "Transactions list"
 
     def __str__(self):
-        return self.product.name + " : " + str(self.transaction)
+        if self.product:
+            return self.product.name + " : " + str(self.transaction)
+        else:
+            return "<deleted> : " + str(self.transaction)

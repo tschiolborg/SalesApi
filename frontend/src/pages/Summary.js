@@ -1,9 +1,7 @@
-// import { useState, useEffect } from 'react'
 import { rj, useRunRj } from 'react-rocketjump'
 import { ajax } from 'rxjs/ajax'
 import Navbar from '../components/Navbar'
 import SummaryCard from "../components/SummaryCard"
-// import styles from "../styles/products.css"
 
 const TransactionState = rj({
     effect: () => ajax.getJSON("/transactions")

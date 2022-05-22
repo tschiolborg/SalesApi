@@ -17,7 +17,8 @@
   }
   
   .modal {
-    width: 50%;
+    margin-left: 100px;
+    width: 30%;
     height: 50%;
     background: white;
     color: white;
@@ -104,6 +105,7 @@
 
   @media screen and (max-width: 600px) {
     .modal {
+      margin-left: 0px;
       width: 80%;
     }
   }
