@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { rj, useRunRj } from 'react-rocketjump'
 import { ajax } from 'rxjs/ajax'
-import { useAuthActions, useAuthUser } from 'use-eazy-auth'
+import { useAuthUser } from 'use-eazy-auth'
 import styles from "../styles/Products.module.css"
 import ProductCard from '../components/ProductCard'
 import ModalSelect from '../components/ModalSelect'

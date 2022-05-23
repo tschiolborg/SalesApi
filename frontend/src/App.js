@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Auth, { useAuthActions } from "use-eazy-auth";
 import { AuthRoute, GuestRoute } from "use-eazy-auth/routes";
 import { ConfigureRj } from "react-rocketjump";
@@ -57,7 +57,7 @@ export default function App() {
       <ConfigureAuth>
         <Router>
           <Switch>
-            <GuestRoute path="/login" redirectTo="/">
+            <GuestRoute path="/login" exact redirectTo="/">
               <Login />
             </GuestRoute>
             <AuthRoute path="/" exact redirectTo="/login">
@@ -69,9 +69,10 @@ export default function App() {
             <AuthRoute path="/end-of-day" exact redirectTo="/login">
               <EndOfDay />
             </AuthRoute>
+            <Route render={() => <h1>Not found</h1>} />
           </Switch>
         </Router>
       </ConfigureAuth>
-    </Auth>
+    </Auth >
   )
 }
