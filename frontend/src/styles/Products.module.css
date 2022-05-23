@@ -3,7 +3,7 @@
     cursor: pointer;
     font-weight: 500;
     padding: 11px 20px;
-    border-radius: 15px;
+    border-radius: 12px;
     font-size: 0.9rem;
     border: none;
     color: white;
@@ -39,30 +39,12 @@
     clear: both;
   }
 
-  .orderBtn {
-    margin: 0px 0px;
-    cursor: pointer;
-    font-weight: 500;
-    padding: 10px 5px;
-    border-radius: 15px;
-    font-size: 0.9rem;
-    border: none;
-    color: white;
-    background: #0c529c;
-    transition: all 0.25s ease;
-  }
-  
-  .orderBtn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px -10px rgba(24, 90, 219, 0.6);
-  }
-
   .confirmBtn {
     margin-top: 5px;
     cursor: pointer;
     font-weight: 500;
     padding: 7px 10px;
-    border-radius: 15px;
+    border-radius: 12px;
     font-size: 0.7rem;
     border: none;
     color: white;
