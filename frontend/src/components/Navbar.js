@@ -38,9 +38,6 @@ export default function Navbar() {
                         <a href="/">Sales</a>
                     </li>
                     <li>
-                        <a href="/tables">Tables</a>
-                    </li>
-                    <li>
                         <a href="/summary">Summary</a>
                     </li>
                     <li>
