@@ -20,11 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get('SECRET_KEY', 'development_without_docker')
 
 # Media directory
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
-
 
 # Application definition
 
@@ -129,7 +130,7 @@ REST_FRAMEWORK = {
 }
 
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
 # Append slash to url if not provied
 APPEND_SLASH = True
