@@ -22,11 +22,11 @@ export default function EndOfDay() {
     }
     const total_not_payed = () => {
         if (transactions) {
-            return (total_price() - transactions.reduce(
+            return Math.max(0, (total_price() - transactions.reduce(
                 (total, currentValue) =>
                     total = total
                     + parseFloat(currentValue.amount_payed),
-                0)).toFixed(2)
+                0))).toFixed(2)
         }
     }
 
