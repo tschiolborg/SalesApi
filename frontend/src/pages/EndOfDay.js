@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar'
 
 
 const TransactionState = rj({
-    effect: () => ajax.getJSON("/transactions")
+    effect: () => ajax.getJSON("/api/transactions/")
 })
 
 export default function EndOfDay() {

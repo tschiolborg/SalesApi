@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Auth, { useAuthActions } from "use-eazy-auth";
 import { AuthRoute, GuestRoute } from "use-eazy-auth/routes";
 import { ConfigureRj } from "react-rocketjump";
@@ -11,7 +11,7 @@ import EndOfDay from "./pages/EndOfDay";
 
 const login = (credentials = {}) =>
   ajax({
-    url: "/token/",
+    url: "/api/token/",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -25,13 +25,13 @@ const login = (credentials = {}) =>
   )
 
 const me = token =>
-  ajax.getJSON("/me/", {
+  ajax.getJSON("/api/me/", {
     Authorization: `Bearer ${token}`,
   })
 
 const refresh = refreshToken =>
   ajax({
-    url: "/token/refresh/",
+    url: "/api/token/refresh/",
     method: "POST",
     headers: {
       "Content-Type": "application/json",

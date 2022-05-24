@@ -1,4 +1,3 @@
-from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -10,7 +9,7 @@ class Product(models.Model):
 
     name = models.CharField(max_length=256, unique=True)
     count = models.PositiveIntegerField(default=0)
-    image = models.ImageField(upload_to="images/", default="images/no_photo.jpeg")
+    image = models.FileField(upload_to="images/", default="images/no_photo.jpeg")
     price = models.DecimalField(decimal_places=2, max_digits=12)  # add min value
 
     def increase_count(self, amount: int) -> bool:
@@ -26,15 +25,15 @@ class Product(models.Model):
         else:
             return False
 
-    def save(self):
-        super().save()
+    # def save(self):
+    #     super().save()
 
-        img = Image.open(self.image.path)
+    #     img = Image.open(self.image.path)
 
-        if img.height > 300 or img.width > 300:
-            new_img = (300, 300)
-            img.thumbnail(new_img)
-            img.save(self.image.path)
+    #     if img.height > 300 or img.width > 300:
+    #         new_img = (300, 300)
+    #         img.thumbnail(new_img)
+    #         img.save(self.image.path)
 
     def __str__(self):
         return str(self.name)

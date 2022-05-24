@@ -40,7 +40,7 @@ const ModalConfirm = ({ setIsOpen, transactions, setReturnBool }) => {
     }
 
     const sendTransaction = () => {
-        const url = "/transactions/"
+        const url = "/api/transactions/"
         const data = {
             method: "POST",
             headers: {'Content-Type':'application/json'},

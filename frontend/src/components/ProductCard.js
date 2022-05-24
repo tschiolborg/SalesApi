@@ -10,7 +10,7 @@ export default function ProductCard({ product }) {
                     <p><b>{product.name} : ({product.count} left)</b></p>
                 </div>
                 <div>
-                    <ImageComponent link={product.image.match("/media/images/.+")} />
+                    <ImageComponent link={product.image} />
                 </div>
             </div>
         </div>

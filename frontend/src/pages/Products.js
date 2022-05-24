@@ -9,7 +9,7 @@ import ModalConfirm from '../components/ModalConfirm'
 import Navbar from "../components/Navbar"
 
 const ProductsState = rj({
-    effect: (search = '') => ajax.getJSON(`/products/?search=${search}`)
+    effect: (search = '') => ajax.getJSON(`/api/products/?search=${search}`)
 })
 
 export default function Products() {
