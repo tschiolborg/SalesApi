@@ -36,11 +36,11 @@ export default function EndOfDay() {
 
             <div className='col-md-6 p-4'>
                 <div>
-                    <h3>End of day</h3>
+                    <h3>Fin de la journée</h3>
                     <br />
-                    <p>Total for today <b>{total_price()}</b> kr.</p>
-                    <p>Amount not payed: <span style={{ color: "red" }}>{total_not_payed()} kr.</span></p>
-                    <b>Time</b> <span>&emsp;&nbsp;&nbsp;</span> <b>Amount</b> (missing):
+                    <p>Total pour aujourd'hui <b>{total_price()}</b> kr.</p>
+                    <p>Montant non payé: <span style={{ color: "red" }}>{total_not_payed()} kr.</span></p>
+                    <b>Temps</b> <span>&emsp;&nbsp;</span> <b>Montante</b> (disparue):
                 </div>
                 <div className="row p-2">
                     <div>
@@ -49,7 +49,7 @@ export default function EndOfDay() {
                                 <span style={{ position: "fixed" }}>
                                     {transaction.date.slice(11)}
                                 </span>
-                                <span>&emsp;&emsp;&emsp;&emsp;</span>
+                                <span>&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</span>
                                 + {transaction.total_price} kr.
                                 <> </>
                                 {transaction.pay_missing ?

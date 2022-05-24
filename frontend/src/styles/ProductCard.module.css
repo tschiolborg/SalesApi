@@ -5,3 +5,12 @@
 .div:hover {
     transform: translateY(-5px);
 }
+
+.list_group_item {
+  position: relative;
+  display: block;
+  padding: 15px 15px; 
+  margin-bottom: 10px;
+  border: 3px solid #28b89e;
+  line-height: 1em 
+}

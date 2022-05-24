@@ -10,7 +10,7 @@ export default function Navbar() {
     return (
         <nav className={styles.navigation}>
             <a href="/" className={styles.brand_name}>
-                Sales Api
+                BOM - T
             </a>
             <button className={styles.hamburger} onClick={() => {
                 setIsNavExpanded(!isNavExpanded)
@@ -35,16 +35,16 @@ export default function Navbar() {
                 }>
                 <ul>
                     <li>
-                        <a href="/">Sales</a>
+                        <a href="/">Ventes</a>
                     </li>
                     <li>
-                        <a href="/summary">Summary</a>
+                        <a href="/summary">Résumé</a>
                     </li>
                     <li>
-                        <a href="/end-of-day">End of day</a>
+                        <a href="/end-of-day">Fin de la journée</a>
                     </li>
                     <li>
-                        <a href="/login" onClick={logout}>Logout</a>
+                        <a href="/login" onClick={logout}>Se déconnecter</a>
                     </li>
                 </ul>
             </div>

@@ -5,7 +5,7 @@
     align-items: center;
     position: relative;
     padding: 0.5rem 0rem;
-    background-color: #fff;
+    background-color: #10b798;
     color: black;
     box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
     z-index: 10;
@@ -13,8 +13,8 @@
 
   .brand_name {
     text-decoration: none;
-    color: black;
-    font-size: 1.3rem;
+    color: rgb(255, 255, 255);
+    font-size: 1.7rem;
     margin-left: 4rem;
   }
   .navigation_menu {
@@ -33,6 +33,7 @@
   }
 
   .navigation_menu li a {
+    color: #ffffff;
     text-decoration: none;
     display: block;
     width: 100%;
@@ -47,7 +48,7 @@
     width: 40px;
     padding: 0.5rem;
     border-radius: 50%;
-    background-color: #0c529c;
+    background-color: #10b798;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     position: absolute;
@@ -55,9 +56,6 @@
     right: 25px;
     transform: translateY(-50%);
     display: none;
-  }
-  .hamburger:hover {
-    background-color: #0c529c;
   }
 
   @media screen and (max-width: 600px) {

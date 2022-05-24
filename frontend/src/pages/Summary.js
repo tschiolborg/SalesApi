@@ -25,7 +25,7 @@ export default function Summary() {
 
             <div className='col-md-6 p-4'>
                 <div>
-                    <h3>Summary of most recent sales</h3>
+                    <h3>Résumé des ventes les plus récentes</h3>
                 </div>
                 <div className="row mt-2 p-2">
                     <div className='list-item mt-2'>

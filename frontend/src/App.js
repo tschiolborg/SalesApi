@@ -69,7 +69,7 @@ export default function App() {
             <AuthRoute path="/end-of-day" exact redirectTo="/login">
               <EndOfDay />
             </AuthRoute>
-            <Route render={() => <h1>Not found</h1>} />
+            <Route render={() => <b>Not found</b>} />
           </Switch>
         </Router>
       </ConfigureAuth>

@@ -45,7 +45,7 @@ const ModalConfirm = ({ setIsOpen, transactions, setReturnBool }) => {
             method: "POST",
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({
-                "name": "Sale",
+                "name": "Vente",
                 "total_price": total_price,
                 "amount_payed": payAmount,
                 "product_ids": transactions.map(({ product }) => product.id),
@@ -63,13 +63,13 @@ const ModalConfirm = ({ setIsOpen, transactions, setReturnBool }) => {
         <div className={styles.centered}>
             <div className={styles.modal}>
                 <div className={styles.modalHeader}>
-                    <h5 className={styles.heading}>Confirm order</h5>
+                    <h5 className={styles.heading}>Confirmer la commande</h5>
                 </div>
 
                 <div className={styles.modalContent}>
-                    Total price: <b>{total_price} </b> kr. 
+                    Prix total: <b>{total_price} </b> kr. 
                     <br></br>
-                    Payed: <> </>
+                    Payé: <> </>
                     <input 
                         className={styles.modal_input}
                         type="number" 
@@ -83,9 +83,9 @@ const ModalConfirm = ({ setIsOpen, transactions, setReturnBool }) => {
                     />
                     <> </>kr.
                     <br></br>
-                    Give back: <b>{giveBack}</b> kr.
+                    Redonner: <b>{giveBack}</b> kr.
                     <br></br>
-                    Left to pay: <b>{halfPay}</b> kr.
+                    Reste à payer: <b>{halfPay}</b> kr.
                 </div>
                 <div className={styles.modalActions}>
                     <button className={styles.okBtn} onClick={() => {
@@ -93,10 +93,10 @@ const ModalConfirm = ({ setIsOpen, transactions, setReturnBool }) => {
                         setReturnBool(true)
                         sendTransaction()
                     }}>
-                        {halfPay == 0 ? "Pay full" : "Pay subpart"}
+                        {halfPay == 0 ? "Tout payer" : "Payer une partie"}
                     </button>
                     <button className={styles.cancelBtn} onClick={() => setIsOpen(false)}>
-                        Cancel
+                        Annuler
                     </button>
                 </div>
             </div>

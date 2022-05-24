@@ -23,12 +23,12 @@ export default function Login() {
         >
             <div className="col-md-4 offset-md-4">
                 <div className="mb-3">
-                    <h1>Sales Api</h1>
-                    <h4 className="mt-4">Please Log In</h4>
+                    <h1>BOM - T</h1>
+                    <h4 className="mt-4">Veuillez vous connecter</h4>
                 </div>
                 <div className="form-group">
                     <input
-                        placeholder="@username"
+                        placeholder="nom d'utilisateur"
                         className="form-control"
                         type="text"
                         value={username}
@@ -41,7 +41,7 @@ export default function Login() {
                 <br></br>
                 <div className="form-group">
                     <input
-                        placeholder="password"
+                        placeholder="mot de passe"
                         className="form-control"
                         type="password"
                         value={password}
@@ -53,11 +53,11 @@ export default function Login() {
                 </div>
                 <br></br>
                 <button className="btn btn-light" disabled={loginLoading}>
-                    {!loginLoading ? "Login!" : "Logged in..."}
+                    {!loginLoading ? "Connexion!" : "Connecté..."}
                 </button>
                 {loginError && (
                     <div className="alert alert-danger mt-3">
-                        Wrong combination of username and password
+                        Mauvaise combinaison de nom d'utilisateur et de mot de passe.
                     </div>
                 )}
             </div>

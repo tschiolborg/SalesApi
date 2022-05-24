@@ -33,11 +33,11 @@ const ModalSelect = ({ setIsOpen, product, setReturnTransaction }) => {
                     <h5 className={styles.heading}>{product.name}</h5>
                 </div>
                 <div className={styles.modalContent}>
-                    Price: {product.price} kr.
+                    Prix: {product.price} kr.
                     <br></br>
-                    Avaliable: {product.count}
+                    Disponible: {product.count}
                     <br></br>
-                    <>Sell amount: </>
+                    <>Montant de la vente: </>
                     <input 
                         className={styles.modal_input}
                         type="number" 
@@ -57,10 +57,10 @@ const ModalSelect = ({ setIsOpen, product, setReturnTransaction }) => {
                             setReturnTransaction(new Transaction(product, count));
                         }
                     }}>
-                        OK
+                        Confirmer
                     </button>
                     <button className={styles.cancelBtn} onClick={() => setIsOpen(false)}>
-                        Cancel
+                        Annuler
                     </button>
                 </div>
             </div>

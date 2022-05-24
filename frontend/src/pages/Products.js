@@ -86,7 +86,7 @@ export default function Products() {
                             <input
                                 value={search}
                                 onChange={e => setSearch(e.target.value)}
-                                placeholder="Search for a product"
+                                placeholder="Rechercher un produit"
                                 style={{ fontSize: 22 }}
                                 className="form-control"
                             />
@@ -107,11 +107,11 @@ export default function Products() {
                 </div>
                 <div className={styles.columnRight}>
                     <div className={styles.colList}>
-                        <p>Logged in as <i>{user.username}</i></p>
-                        <h5>Current order</h5>
+                        <p>Connecté en tant que <i>{user.username}</i></p>
+                        <h5>Commande en cours</h5>
                         <div>
                             <div>
-                                Total price:
+                                Prix total:
                             </div>
                             <b>
                                 {transactions &&
@@ -128,11 +128,11 @@ export default function Products() {
                                 <button className={styles.confirmBtn} onClick={() => {
                                     tryOpenConfirmModal()
                                 }}>
-                                    Confirm
+                                    Confirmer
                                 </button>
                                 <> </>
                                 <button className={styles.removeBtn} onClick={removeAllTransactions}>
-                                    Delete all
+                                    Enlever tout
                                 </button>
                             </div>
                         </div>
@@ -149,7 +149,7 @@ export default function Products() {
                                             <div>
                                                 <button className={styles.removeBtn}
                                                     onClick={() => { removeTransaction(transaction) }}>
-                                                    Delete
+                                                    Éliminer
                                                 </button>
                                             </div>
                                         </div>
