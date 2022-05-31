@@ -1,10 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, Transaction, Transactions
+from .models import Product, Transaction, Table
 
 # add models for the admin site
-admin.site.register(Product)
-admin.site.register(
-    Transaction,
-)
-admin.site.register(Transactions)
+admin.site.register([Product, Transaction, Table])

@@ -62,3 +62,14 @@ class Transactions(models.Model):
         transaction = self.transaction if self.transaction else "<deleted-transaction>"
         return productname + " : " + str(transaction)
 
+
+
+class Table(models.Model):
+    "a table with a transaction"
+
+    name = models.CharField(max_length=256, default="Table")
+    transaction = models.ForeignKey(Transaction, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
