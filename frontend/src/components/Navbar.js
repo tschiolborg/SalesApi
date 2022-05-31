@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useAuthActions } from 'use-eazy-auth'
 import styles from "../styles/Navbar.module.css"
+import logo from "../logo.png"
 
 
 export default function Navbar() {
@@ -9,9 +10,7 @@ export default function Navbar() {
 
     return (
         <nav className={styles.navigation}>
-            <a href="/" className={styles.brand_name}>
-                BOM - T
-            </a>
+            <img src={logo} className={styles.logo} />
             <button className={styles.hamburger} onClick={() => {
                 setIsNavExpanded(!isNavExpanded)
             }}>

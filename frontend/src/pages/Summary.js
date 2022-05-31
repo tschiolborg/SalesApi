@@ -34,6 +34,7 @@ export default function Summary() {
                                 <SummaryCard key={transaction} transaction={transaction} />
                             </div>
                         ))}
+
                     </div>
                 </div>
             </div>

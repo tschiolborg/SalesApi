@@ -33,7 +33,7 @@ const ModalSelect = ({ setIsOpen, product, setReturnTransaction }) => {
                     <h5 className={styles.heading}>{product.name}</h5>
                 </div>
                 <div className={styles.modalContent}>
-                    Prix: {product.price} kr.
+                    Prix: {product.price} Fc
                     <br></br>
                     Disponible: {product.count}
                     <br></br>

@@ -67,7 +67,7 @@ const ModalConfirm = ({ setIsOpen, transactions, setReturnBool }) => {
                 </div>
 
                 <div className={styles.modalContent}>
-                    Prix total: <b>{total_price} </b> kr. 
+                    Prix total: <b>{total_price} </b> Fc
                     <br></br>
                     Payé: <> </>
                     <input 
@@ -81,11 +81,11 @@ const ModalConfirm = ({ setIsOpen, transactions, setReturnBool }) => {
                             evalPayAmount(e.target.value)
                         }}
                     />
-                    <> </>kr.
+                    <> </>Fc
                     <br></br>
-                    Redonner: <b>{giveBack}</b> kr.
+                    Redonner: <b>{giveBack}</b> Fc
                     <br></br>
-                    Reste à payer: <b>{halfPay}</b> kr.
+                    Reste à payer: <b>{halfPay}</b> Fc
                 </div>
                 <div className={styles.modalActions}>
                     <button className={styles.okBtn} onClick={() => {

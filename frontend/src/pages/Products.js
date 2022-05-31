@@ -122,7 +122,7 @@ export default function Products() {
                                             * parseFloat(currentValue.count),
                                         0).toFixed(2)
                                 }
-                                <> kr.</>
+                                <> Fc</>
                             </b>
                             <div>
                                 <button className={styles.confirmBtn} onClick={() => {
@@ -142,7 +142,7 @@ export default function Products() {
                                     <div className="list-group-item">
                                         <div className={styles.myFontSize}>
                                             <div>
-                                                <b>{(transaction.count * transaction.product.price).toFixed(2)} kr. </b>
+                                                <b>{(transaction.count * transaction.product.price).toFixed(2)} Fc </b>
                                             </div>
                                             <b>{transaction.count} x </b>
                                             <b>{transaction.product.name} </b>

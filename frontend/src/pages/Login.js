@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuthActions, useAuthState } from "use-eazy-auth";
+import logo from "../logo2.png"
 
 export default function Login() {
     const { loginLoading, loginError } = useAuthState()
@@ -23,7 +24,7 @@ export default function Login() {
         >
             <div className="col-md-4 offset-md-4">
                 <div className="mb-3">
-                    <h1>BOM - T</h1>
+                    <img src={logo} className="logo_front_page" />
                     <h4 className="mt-4">Veuillez vous connecter</h4>
                 </div>
                 <div className="form-group">

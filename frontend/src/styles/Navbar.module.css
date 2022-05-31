@@ -5,7 +5,7 @@
     align-items: center;
     position: relative;
     padding: 0.5rem 0rem;
-    background-color: #10b798;
+    background-color: rgb(0, 171, 142);
     color: black;
     box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
     z-index: 10;
@@ -17,6 +17,13 @@
     font-size: 1.7rem;
     margin-left: 4rem;
   }
+
+  .logo {
+    width: 7%;
+    height: 100%;
+    margin-left: 4rem;
+  }
+
   .navigation_menu {
     margin-left: auto;
     margin-right: 20px;
@@ -48,7 +55,7 @@
     width: 40px;
     padding: 0.5rem;
     border-radius: 50%;
-    background-color: #10b798;
+    background-color: rgb(0, 171, 142);
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     position: absolute;
@@ -65,6 +72,12 @@
     .brand_name {
       margin-left: 0.2rem;
     }
+    .logo {
+      width: 20%;
+      height: 100%;
+      margin-left: 0.2rem;
+    }
+  
 
     .navigation_menu ul {
         position: absolute;

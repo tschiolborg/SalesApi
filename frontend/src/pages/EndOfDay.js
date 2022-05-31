@@ -1,4 +1,3 @@
-// import { useState, useEffect } from 'react'
 import { rj, useRunRj } from 'react-rocketjump'
 import { ajax } from 'rxjs/ajax'
 import Navbar from '../components/Navbar'
@@ -38,8 +37,8 @@ export default function EndOfDay() {
                 <div>
                     <h3>Fin de la journée</h3>
                     <br />
-                    <p>Total pour aujourd'hui <b>{total_price()}</b> kr.</p>
-                    <p>Montant non payé: <span style={{ color: "red" }}>{total_not_payed()} kr.</span></p>
+                    <p>Total pour aujourd'hui <b>{total_price()}</b> Fc</p>
+                    <p>Montant non payé: <span style={{ color: "red" }}>{total_not_payed()} Fc</span></p>
                     <b>Temps</b> <span>&emsp;&nbsp;</span> <b>Montante</b> (disparue):
                 </div>
                 <div className="row p-2">
@@ -50,11 +49,11 @@ export default function EndOfDay() {
                                     {transaction.date.slice(11)}
                                 </span>
                                 <span>&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</span>
-                                + {transaction.total_price} kr.
+                                + {transaction.total_price} Fc
                                 <> </>
                                 {transaction.pay_missing ?
                                     <span style={{ color: "red" }}>
-                                        ({(transaction.total_price - transaction.amount_payed).toFixed(2)} kr.)
+                                        ({(transaction.total_price - transaction.amount_payed).toFixed(2)} Fc)
                                     </span>
                                     : ""}
                             </div>

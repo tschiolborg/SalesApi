@@ -38,3 +38,7 @@ input[type=number] {
   height: 100px;
   max-width : 210px;
 }
+.logo_front_page {
+  width: 50%;
+  height: 50%;
+}
