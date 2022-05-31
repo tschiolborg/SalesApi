@@ -25,18 +25,8 @@ class Product(models.Model):
         else:
             return False
 
-    # def save(self):
-    #     super().save()
-
-    #     img = Image.open(self.image.path)
-
-    #     if img.height > 300 or img.width > 300:
-    #         new_img = (300, 300)
-    #         img.thumbnail(new_img)
-    #         img.save(self.image.path)
-
     def __str__(self):
-        return str(self.name)
+        return str(self.name) if self.name else "<no-name>"
 
 
 class Transaction(models.Model):
@@ -53,7 +43,8 @@ class Transaction(models.Model):
         return self.total_price > self.amount_payed
 
     def __str__(self):
-        return self.name + " at " + str(self.date)[0:16] + " by " + str(self.user.username)
+        username = str(self.user.username) if self.user else "<deleted_user>"
+        return self.name + " at " + str(self.date)[0:16] + " by " + username
 
 
 class Transactions(models.Model):
@@ -67,7 +58,7 @@ class Transactions(models.Model):
         verbose_name_plural = "Transactions list"
 
     def __str__(self):
-        if self.product:
-            return self.product.name + " : " + str(self.transaction)
-        else:
-            return "<deleted> : " + str(self.transaction)
+        productname = self.product.name if self.product else "<deleted-product>"
+        transaction = self.transaction if self.transaction else "<deleted-transaction>"
+        return productname + " : " + str(transaction)
+
