@@ -29,6 +29,16 @@ export default function EndOfDay() {
         }
     }
 
+    const getTransactions = () => {
+        var new_transactions = []
+        transactions.forEach(transaction => {
+            if (transaction.total_price > 0) {
+                new_transactions.push(transaction)
+            }
+        });
+        return new_transactions
+    }
+
     return (
         <div>
             <Navbar />
@@ -43,7 +53,7 @@ export default function EndOfDay() {
                 </div>
                 <div className="row p-2">
                     <div>
-                        {transactions && transactions.map((transaction) => (
+                        {transactions && getTransactions().map((transaction) => (
                             <div key={transaction.id} className="mt-2">
                                 <span style={{ position: "fixed" }}>
                                     {transaction.date.slice(11)}

@@ -93,7 +93,7 @@ const ModalConfirm = ({ setIsOpen, transactions, setReturnBool }) => {
                         setReturnBool(true)
                         sendTransaction()
                     }}>
-                        {halfPay == 0 ? "Tout payer" : "Payer une partie"}
+                        {halfPay == 0 ? "Tout payer" : "Payer partie"}
                     </button>
                     <button className={styles.cancelBtn} onClick={() => setIsOpen(false)}>
                         Annuler

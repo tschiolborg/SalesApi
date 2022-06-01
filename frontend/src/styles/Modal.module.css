@@ -76,6 +76,44 @@
     box-shadow: 0 10px 20px -10px rgba(74, 222, 33, 0.735);
     transform: translateY(-5px);
   }
+
+  .middleBtn {
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 7px 20px;
+    border-radius: 12px;
+    font-size: 0.6rem;
+    border: none;
+    color: rgb(255, 255, 255);
+    background: #3e5eff;
+    transition: all 0.25s ease;
+  }
+  
+  .middleBtn:hover {
+    box-shadow: 0 10px 20px -10px rgba(33, 77, 222, 0.735);
+    transform: translateY(-5px);
+  }
+
+  .deleteBtn {
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 7px 20px;
+    border-radius: 12px;
+    font-size: 0.6rem;
+    border: none;
+    color: rgb(255, 255, 255);
+    background: #f6603a;
+    transition: all 0.25s ease;
+  }
+  
+  .deleteBtn:hover {
+    box-shadow: 0 10px 20px -10px rgba(222, 61, 33, 0.735);
+    transform: translateY(-5px);
+  }
   
   .cancelBtn {
     margin-top: 10px;
@@ -103,7 +141,7 @@
     max-width: 100px;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 860px) {
     .modal {
       margin-left: 0px;
       width: 80%;

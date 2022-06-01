@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from decimal import Decimal
 
 from rest_framework import status
@@ -84,19 +84,26 @@ def transactions_view(request):
 
 
 
-@api_view(["GET", "POST", "PUT"])
+@api_view(["GET", "POST", "PUT", "DELETE"])
 def table_view(request):
 
     if request.method == "GET":
         tables = Table.objects.all().order_by("name")
 
-        context = {"tables": tables}
+        context_list = []
 
-        return Response(context, status=status.HTTP_200_OK)
+        for table in tables:
+            c = {}
+            c["table_id"] = table.id
+            c["name"] = table.name
+            c["transaction_id"] = table.transaction.id
+
+            context_list += [c]
+
+        return Response(context_list, status=status.HTTP_200_OK)
 
     elif request.method == "POST":
 
-        name = request.data["name"]
         user_id = request.data["user_id"]
 
         user = User.objects.filter(id=user_id)[0]
@@ -108,8 +115,7 @@ def table_view(request):
             name="Table",
         )
 
-        _ = Table.objects.create(
-            name = name,
+        _ = Table.create(
             transaction = transaction
         )
 
@@ -123,8 +129,15 @@ def table_view(request):
 
         if request.data.get("pay") is not None:
             transaction.amount_payed = request.data["pay"]
+            transaction.date = datetime.now()
+            transaction.save()
 
-            return Response(context, status=status.HTTP_200_OK)
+            return Response(status=status.HTTP_200_OK)
+
+        if request.data.get("rename") is not None:
+            table.rename(request.data["rename"])
+
+            return Response(status=status.HTTP_200_OK)
 
         product_ids = request.data["product_ids"]
         counts = request.data["counts"]
@@ -139,7 +152,14 @@ def table_view(request):
             Transactions.objects.create(transaction=transaction, product=product, count=count)
             transaction.total_price += Decimal(product.price * count)
 
+        transaction.date = datetime.now()
+        transaction.save()
 
-        return Response(context, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_200_OK)
+    
+    elif request.method == "DELETE":
+        table_id = request.data["table_id"]
+        Table.objects.filter(id=table_id).delete()
+        return Response(status=status.HTTP_200_OK)
 
     return Response(status=status.HTTP_400_BAD_REQUEST)

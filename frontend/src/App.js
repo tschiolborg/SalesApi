@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Products from "./pages/Products";
 import Summary from "./pages/Summary";
 import EndOfDay from "./pages/EndOfDay";
+import Tables from "./pages/Tables";
 
 const login = (credentials = {}) =>
   ajax({
@@ -62,6 +63,9 @@ export default function App() {
             </GuestRoute>
             <AuthRoute path="/" exact redirectTo="/login">
               <Products />
+            </AuthRoute>
+            <AuthRoute path="/tables" exact redirectTo="/login">
+              <Tables />
             </AuthRoute>
             <AuthRoute path="/summary" exact redirectTo="/login">
               <Summary />

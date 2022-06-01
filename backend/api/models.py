@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from PIL import Image
-
 
 class Product(models.Model):
     """A product that we are selling"""
@@ -67,8 +65,24 @@ class Transactions(models.Model):
 class Table(models.Model):
     "a table with a transaction"
 
-    name = models.CharField(max_length=256, default="Table")
+    name = models.CharField(max_length=256, default="Tableau")
     transaction = models.ForeignKey(Transaction, on_delete=models.CASCADE)
+    value = models.IntegerField(default=0)
+
+    @classmethod
+    def create(cls, transaction):
+        table = cls(transaction=transaction)
+        top_list = Table.objects.order_by('-value')
+        table.value = top_list[0].value + 1 if len(top_list) > 0 else 1
+        table.name += str(table.value)
+        table.save()
+        return table
+
+    def rename(self, name):
+        self.value = 0
+        self.name = name
+        self.save()
+
 
     def __str__(self):
         return self.name

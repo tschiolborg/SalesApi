@@ -6,6 +6,7 @@ import styles from "../styles/Products.module.css"
 import ProductCard from '../components/ProductCard'
 import ModalSelect from '../components/ModalSelect'
 import ModalConfirm from '../components/ModalConfirm'
+import ModalUpdateTable from '../components/ModalUpdateTable'
 import Navbar from "../components/Navbar"
 
 const ProductsState = rj({
@@ -18,6 +19,7 @@ export default function Products() {
     const [{ data: products }] = useRunRj(ProductsState, [search], false) // trigger api call
     const [isOpen, setIsOpen] = useState(false) // select modal
     const [isOpenC, setIsOpenC] = useState(false) // confirm modal
+    const [isOpenT, setIsOpenT] = useState(false) // update table modal
     const [selectedItem, setSelectedItem] = useState({ name: "", price: 0.0, count: 0 })
     const [transactions, setTransactions] = useState([])
 
@@ -76,6 +78,12 @@ export default function Products() {
         }
     }
 
+    const tryOpenUpdateTableModal = () => {
+        if (transactions.length > 0) {
+            setIsOpenT(true)
+        }
+    }
+
     return (
         <div>
             <Navbar />
@@ -130,6 +138,11 @@ export default function Products() {
                                 }}>
                                     Confirmer
                                 </button>
+                                <button className={styles.middleBtn} onClick={() => {
+                                    tryOpenUpdateTableModal()
+                                }}>
+                                    À la table
+                                </button>
                                 <> </>
                                 <button className={styles.removeBtn} onClick={removeAllTransactions}>
                                     Enlever tout
@@ -171,6 +184,14 @@ export default function Products() {
                     isOpenC && transactions.length > 0 &&
                     <ModalConfirm
                         setIsOpen={setIsOpenC}
+                        transactions={transactions}
+                        setReturnBool={returnRemoveTransactions}
+                    />
+                }
+                {
+                    isOpenT && transactions.length > 0 &&
+                    <ModalUpdateTable
+                        setIsOpen={setIsOpenT}
                         transactions={transactions}
                         setReturnBool={returnRemoveTransactions}
                     />

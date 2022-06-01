@@ -42,3 +42,21 @@ input[type=number] {
   width: 50%;
   height: 50%;
 }
+
+.basicBtn {
+  margin-top: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 7px 10px;
+  border-radius: 12px;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  background: #44ff3e;
+  transition: all 0.25s ease;
+}
+
+.basicBtn:hover {
+  box-shadow: 0 10px 20px -10px rgba(74, 222, 33, 0.735);
+  transform: translateY(-5px);
+}

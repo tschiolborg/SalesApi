@@ -11,12 +11,13 @@ export default function Summary() {
     const [{ data: transactions }] = useRunRj(TransactionState, [], false)
 
     const getTransactions = () => {
-        if (transactions.length > 6) {
-            return transactions.slice(0, 6)
-        } else {
-            return transactions
-        }
-
+        var new_transactions = []
+        transactions.forEach(transaction => {
+            if (transaction.total_price > 0 && new_transactions.length <= 6) {
+                new_transactions.push(transaction)
+            }
+        });
+        return new_transactions
     }
 
     return (

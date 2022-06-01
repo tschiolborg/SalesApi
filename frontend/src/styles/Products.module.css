@@ -57,6 +57,25 @@
     transform: translateY(-5px);
   }
 
+  .middleBtn {
+    margin-top: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 7px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    border: none;
+    color: rgb(255, 255, 255);
+    background: #3e5eff;
+    transition: all 0.25s ease;
+  }
+  
+  .middleBtn:hover {
+    box-shadow: 0 10px 20px -10px rgba(33, 77, 222, 0.735);
+    transform: translateY(-5px);
+  }
+
   .removeBtn {
     margin-top: 5px;
     cursor: pointer;
